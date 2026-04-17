@@ -131,6 +131,7 @@ const Home = () => {
           }
         </div>
       </section>
+
       <section className="text-center py-14 bg-red-600 mt-5 flex p-5 justify-center items-center gap-4">
 
         {
@@ -155,8 +156,8 @@ const Home = () => {
       <section>
         <div className=" flex h-[500px] w-full bg-orange-400 my-5">
           <div className=" w-[50%] h-full bg-orange-400">
-            <img src="https://srichaitanya.net/wp-content/uploads/2023/01/srichaitnya.webp" alt="img" 
-            className=" w-full h-full"
+            <img src="https://srichaitanya.net/wp-content/uploads/2023/01/srichaitnya.webp" alt="img"
+              className=" w-full h-full"
             />
           </div>
           <div className=" w-[50%] h-full bg-blue-950 gap-4 items-start text-white p-10 flex flex-col">
@@ -165,17 +166,56 @@ const Home = () => {
               Sri Chaitanya College has come up with some innovative and world-class learning methodologies that would make the Indians rules the world. The futuristic vision of Dr. B.S. Rao and Dr. Jhansi Lakshmi Bhai always kept the students ahead of time. Their farsightedness, determination and leadership qualities have given India a World-Class education system. Today india is all set to produce World-class engineers, technologists, doctors, scientists and management gurus without sending them abroad for grooming. The grooming that one undergoes at institutions in UK, USA is now available in India, right here.
             </p>
             <button className=" bg-red-600 px-7 py-3 flex items-center gap-2">
-              Know More <ArrowRight/>
+              Know More <ArrowRight />
             </button>
           </div>
         </div>
       </section>
+
+      <section id="5" >
+        <div className=" w-full h-52  flex justify-center ">
+          <div className="h-full w-[40%] p-5 flex flex-col gap-4 text-white items-start relative bg-cover bg-center"
+            style={{ backgroundImage: "url('https://res.cloudinary.com/dmpka6wxi/image/upload/v1776450127/er_tb15ue.png')" }}
+          >
+            {/* Light red overlay - image upar dikhega but red tint bhi */}
+            <div className="absolute inset-0 bg-red-900/85 mix-blend-multiply"></div>
+
+            {/* Content */}
+            <div className="relative z-10">
+              <h1 className="font-bold text-3xl">Question Paper, Key & Solutions</h1>
+              <p className="mt-2">Download JEE Main, Advanced and NEET Question Paper and Solutions here.</p>
+              <button className="bg-yellow-500 px-4 py-3 flex items-center gap-2 mt-4 rounded-lg hover:bg-yellow-600 transition">
+                KNOW MORE <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          <div className="h-full w-[40%] p-5 flex flex-col gap-4 text-white items-start relative bg-cover bg-center"
+            style={{ backgroundImage: "url('https://res.cloudinary.com/dmpka6wxi/image/upload/v1776450127/er_tb15ue.png')" }}
+          >
+            {/* Light red overlay - image upar dikhega but red tint bhi */}
+            <div className="absolute inset-0 bg-blue-600/85 mix-blend-multiply"></div>
+
+            {/* Content */}
+            <div className="relative z-10">
+              <h1 className="font-bold text-3xl">Rank Predictor</h1>
+              <p className="mt-2">Predict your JEE/NEET Percentile and Expected JEE/NEET All India Rank from your Overall Percentile secured.</p>
+              <button className="bg-yellow-500 px-4 py-3 flex items-center gap-2 mt-4 rounded-lg hover:bg-yellow-600 transition">
+                KNOW MORE <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="text-center py-10 bg-red-600 mt-5">
         <Link to="/apply" className="bg-red-700 text-white px-6 py-3 rounded">
           Apply Now
         </Link>
       </section>
+
+
 
       {/* WHATSAPP */}
       <a

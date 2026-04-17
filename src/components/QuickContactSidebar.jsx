@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
+import { Facebook, FacebookIcon, Instagram, InstagramIcon, MessageCircle, MessageCircleCodeIcon, Youtube, YoutubeIcon } from "lucide-react";
 
 const QuickContactSidebar = () => {
     return (
@@ -16,7 +16,7 @@ const QuickContactSidebar = () => {
                             className="text-white hover:text-yellow-300 transition flex flex-col items-center"
                             title="Chat on WhatsApp"
                         >
-                            <MessageCircle size={22} />
+                            <MessageCircleCodeIcon size={24}/>
                             <span className="text-[8px] font-medium tracking-wide mt-0.5">Quick</span>
                             <span className="text-[8px] font-medium tracking-wide -mt-0.5">Contact</span>
                         </a>
@@ -31,7 +31,7 @@ const QuickContactSidebar = () => {
                         rel="noopener noreferrer"
                         className="bg-[#1877F2] hover:bg-[#0f62e0] w-[53px] h-[53px] flex items-center justify-center text-white transition"
                     >
-                        <Facebook size={24} />
+                        <FacebookIcon size={24}/>
                     </a>
                 </li>
 
@@ -43,7 +43,7 @@ const QuickContactSidebar = () => {
                         rel="noopener noreferrer"
                         className="bg-gradient-to-br from-[#FCAF45] via-[#F56040] to-[#C13584] w-[53px] h-[53px] flex items-center justify-center text-white hover:opacity-80 transition"
                     >
-                        <Instagram size={24} />
+                        <InstagramIcon size={24}/>
                     </a>
                 </li>
 
@@ -55,7 +55,7 @@ const QuickContactSidebar = () => {
                         rel="noopener noreferrer"
                         className="bg-[#FF0000] hover:bg-[#cc0000] w-[53px] h-[53px] flex items-center justify-center text-white transition  rounded-bl-2xl"
                     >
-                        <Youtube size={24} />
+                        <YoutubeIcon size={24}/>
                     </a>
                 </li>
 
