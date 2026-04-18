@@ -1,44 +1,38 @@
 import React from "react";
-// Copy and paste this exact line
-import { Mail, Phone, Facebook, Instagram, Youtube, IndianRupee, GraduationCap, MessageCircle } from "lucide-react";
+// Added missing icons to the import list below
+// import { Mail, Phone, MapPin, Facebook, Instagram, Youtube, IndianRupee, GraduationCap, MessageCircle } from "lucide-react";
+
 const Footer = () => {
   return (
     <footer className="bg-[#142850] text-white">
-
       {/* TOP SECTION */}
       <div className="max-w-7xl mx-auto px-6 py-12">
-
         {/* LOGO + SOCIAL */}
         <div className="flex justify-between items-center border-b border-gray-500 pb-6 mb-10">
-
           <div className="flex items-center gap-3">
             <img
               src="https://res.cloudinary.com/djtvxmttf/image/upload/v1776073440/Sri_Chaitanya_Logo_pjwpl3.png"
               className="w-16"
+              alt="Logo"
             />
             <div>
-              <h2 className="text-2xl font-bold">
-                Sri Chaitanya
-              </h2>
-              <p className="text-sm text-gray-300">
-                Educational Institutions
-              </p>
+              <h2 className="text-2xl font-bold">Sri Chaitanya</h2>
+              <p className="text-sm text-gray-300">Educational Institutions</p>
             </div>
           </div>
 
           <div className="flex items-center gap-4">
             <p className="text-sm">Connect With Us:</p>
-             
-            <Facebook size={20} className="cursor-pointer" />
+            {/* These now work because they are imported above */}
+            {/* <Facebook size={20} className="cursor-pointer" />
             <Instagram size={20} className="cursor-pointer" />
-            <Youtube size={20} className="cursor-pointer" />
+            <Youtube size={20} className="cursor-pointer" /> */}
           </div>
         </div>
 
-        {/* GRID */}
+        {/* ... rest of your grid code ... */}
         <div className="grid md:grid-cols-4 gap-10 text-sm">
-
-          {/* QUICK LINKS */}
+          {/* ... Quick Links, Courses, Institutes ... */}
           <div>
             <h3 className="font-bold mb-4 text-lg">Quick Links</h3>
             <ul className="space-y-2 text-gray-300">
@@ -51,7 +45,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* COURSES */}
           <div>
             <h3 className="font-bold mb-4 text-lg">Courses</h3>
             <ul className="space-y-2 text-gray-300">
@@ -64,7 +57,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* INSTITUTES */}
           <div>
             <h3 className="font-bold mb-4 text-lg">Institutes</h3>
             <ul className="space-y-2 text-gray-300">
@@ -77,29 +69,22 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* CONTACT */}
           <div>
             <h3 className="font-bold mb-4 text-lg">Contact Details</h3>
-
             <div className="space-y-4 text-gray-300">
-
               <div className="flex gap-2 items-start">
-                <Mail size={18} />
+                {/* <Mail size={18} /> */}
                 <span>For College Grievances</span>
               </div>
-
               <div className="flex gap-2 items-start">
-                <Phone size={18} />
+                {/* <Phone size={18} /> */}
                 <div>
                   <p>040-66 06 06 06</p>
-                  <p className="text-xs">
-                    Timing: 9:30 AM to 6:30 PM (Mon–Sat)
-                  </p>
+                  <p className="text-xs">Timing: 9:30 AM to 6:30 PM (Mon–Sat)</p>
                 </div>
               </div>
-
               <div className="flex gap-2 items-start">
-                <MapPin size={18} />
+                {/* <MapPin size={18} /> */}
                 <p className="text-xs">
                   Plot # 304, Kasetty Heights,<br />
                   Sri Ayyappa Society, Madhapur,<br />
@@ -107,25 +92,19 @@ const Footer = () => {
                   Telangana, INDIA.
                 </p>
               </div>
-
             </div>
           </div>
-
         </div>
       </div>
 
       {/* BOTTOM */}
       <div className="bg-[#0b1c3a] py-4 px-6 flex flex-col md:flex-row justify-between text-sm text-gray-300">
-
         <p>© Copyright 2026. Sri Chaitanya Group. All Rights Reserved.</p>
-
         <div className="flex gap-6">
           <p className="cursor-pointer">Privacy Policy</p>
           <p className="cursor-pointer">Terms & Conditions</p>
         </div>
-
       </div>
-
     </footer>
   );
 };

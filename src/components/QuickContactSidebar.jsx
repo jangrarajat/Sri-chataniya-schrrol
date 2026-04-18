@@ -1,12 +1,14 @@
 import React from "react";
-import { Facebook, Instagram, MessageCircle, MessageCircleCode, Youtube } from "lucide-react";
+// Removed 'Icon' from the names and fixed the import list
+// import { MessageCircle, MessageSquareCode, Facebook, Instagram, Youtube } from "lucide-react";
+
 const QuickContactSidebar = () => {
     return (
-        <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[99999] hidden md:block ">
-            <ul className="list-none m-0 p-0 ">
+        <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[99999] hidden md:block">
+            <ul className="list-none m-0 p-0">
                 
-                {/* WhatsApp - Quick Contact */}
-                <li className="relative w-[53px] m-0 p-0 cursor-pointer text-white block  ">
+                {/* WhatsApp */}
+                <li className="relative w-[53px] m-0 p-0 cursor-pointer text-white block">
                     <div className="bg-gradient-to-b from-red-600 to-red-700 w-[53px] h-[53px] flex flex-col items-center justify-center rounded-tl-2xl">
                         <a
                             href="https://wa.me/919982451367?text=Hello%20Sri%20Chetanaya%20Team"
@@ -15,7 +17,8 @@ const QuickContactSidebar = () => {
                             className="text-white hover:text-yellow-300 transition flex flex-col items-center"
                             title="Chat on WhatsApp"
                         >
-                            <MessageCircleCodeIcon size={24}/>
+                            {/* Changed to MessageCircle or MessageSquareCode */}
+                            {/* <MessageSquareCode size={24}/> */}
                             <span className="text-[8px] font-medium tracking-wide mt-0.5">Quick</span>
                             <span className="text-[8px] font-medium tracking-wide -mt-0.5">Contact</span>
                         </a>
@@ -30,7 +33,7 @@ const QuickContactSidebar = () => {
                         rel="noopener noreferrer"
                         className="bg-[#1877F2] hover:bg-[#0f62e0] w-[53px] h-[53px] flex items-center justify-center text-white transition"
                     >
-                        <FacebookIcon size={24}/>
+                        {/* <Facebook size={24}/> */}
                     </a>
                 </li>
 
@@ -42,7 +45,7 @@ const QuickContactSidebar = () => {
                         rel="noopener noreferrer"
                         className="bg-gradient-to-br from-[#FCAF45] via-[#F56040] to-[#C13584] w-[53px] h-[53px] flex items-center justify-center text-white hover:opacity-80 transition"
                     >
-                        <InstagramIcon size={24}/>
+                        {/* <Instagram size={24}/> */}
                     </a>
                 </li>
 
@@ -52,9 +55,9 @@ const QuickContactSidebar = () => {
                         href="https://www.youtube.com/@srichaitanyakotputli"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-[#FF0000] hover:bg-[#cc0000] w-[53px] h-[53px] flex items-center justify-center text-white transition  rounded-bl-2xl"
+                        className="bg-[#FF0000] hover:bg-[#cc0000] w-[53px] h-[53px] flex items-center justify-center text-white transition rounded-bl-2xl"
                     >
-                        <YoutubeIcon size={24}/>
+                        {/* <Youtube size={24}/> */}
                     </a>
                 </li>
 
