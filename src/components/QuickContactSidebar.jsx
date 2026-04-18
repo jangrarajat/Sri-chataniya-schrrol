@@ -1,6 +1,5 @@
 import React from "react";
-import {   FacebookIcon,   InstagramIcon,  MessageCircleCodeIcon,   YoutubeIcon } from "lucide-react";
-
+import { Facebook, Instagram, MessageCircle, MessageCircleCode, Youtube } from "lucide-react";
 const QuickContactSidebar = () => {
     return (
         <div className="fixed right-0 top-1/2 -translate-y-1/2 z-[99999] hidden md:block ">

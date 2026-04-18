@@ -1,6 +1,6 @@
 import React from "react";
-import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
-
+// Copy and paste this exact line
+import { Mail, Phone, Facebook, Instagram, Youtube, IndianRupee, GraduationCap, MessageCircle } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="bg-[#142850] text-white">
@@ -28,7 +28,7 @@ const Footer = () => {
 
           <div className="flex items-center gap-4">
             <p className="text-sm">Connect With Us:</p>
-
+             
             <Facebook size={20} className="cursor-pointer" />
             <Instagram size={20} className="cursor-pointer" />
             <Youtube size={20} className="cursor-pointer" />

@@ -2,9 +2,6 @@ import React from "react";
 import {
   Mail,
   Phone,
-  Facebook,
-  Instagram,
-  Youtube,
   IndianRupee,
   GraduationCap,
 } from "lucide-react";
