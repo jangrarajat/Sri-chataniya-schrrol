@@ -39,21 +39,32 @@ const Footer = () => {
           <div>
             <h3 className="font-bold mb-4 text-lg">Quick Links</h3>
             <ul className="space-y-2 text-gray-300">
-              <li className=" cursor-pointer  hover:underline">Home</li>
-              <li className=" cursor-pointer  hover:underline">About Us</li>
-              <li className=" cursor-pointer  hover:underline">Courses</li>
-              <li className=" cursor-pointer  hover:underline">Admission</li>
-              <li className=" cursor-pointer  hover:underline">Contact</li>
+              <li> <a href="/" className=" cursor-pointer  hover:underline">Home</a></li>
+              <li> <a href="/about" className=" cursor-pointer  hover:underline">About Us</a></li>
+              <li ><a href="/courses" className=" cursor-pointer  hover:underline">Courses</a></li>
+              <li> <a href="/admission" className=" cursor-pointer  hover:underline">Admission</a></li>
+              <li> <a href="/contact" className=" cursor-pointer  hover:underline">Contact</a></li>
             </ul>
           </div>
+
+          {/* <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/admission" element={<Admission />} />
+        <Route path="/campus" element={<Campus />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/gallery" element={<Gallery />} />
+        // {/* <Route path="/results" element={<Results />} /> */}
+          {/* // <Route path="/team" element={<Team />} /> */}
+          {/* // <Route path="/branches" element={<Branches/>} /> */}
 
           <div>
             <h3 className="font-bold mb-4 text-lg">Academics</h3>
             <ul className="space-y-2 text-gray-300">
-              <li  className=" cursor-pointer hover:underline">School</li>
-              <li  className=" cursor-pointer hover:underline">Foundation</li>
-              <li  className=" cursor-pointer hover:underline">Results</li>
-              <li  className=" cursor-pointer hover:underline">Careers</li>
+              <li className=" cursor-pointer hover:underline">School</li>
+              <li className=" cursor-pointer hover:underline">Foundation</li>
+              <li className=" cursor-pointer hover:underline">Results</li>
+              <li className=" cursor-pointer hover:underline">Careers</li>
             </ul>
           </div>
 
@@ -86,7 +97,7 @@ const Footer = () => {
               <div className="flex flex-col gap-2 items-start">
                 {/* <MapPin size={18} /> */}
                 <p className="text-xs flex gap-2 ">
-                <CiLocationOn />  Near Krishna Talkies, Old Vinayak Hospital Building,Kotputli - 303108<br />
+                  <CiLocationOn />  Near Krishna Talkies, Old Vinayak Hospital Building,Kotputli - 303108<br />
                 </p>
                 <p className="text-xs flex gap-2 items-center "><MdAddIcCall /> +91 +919982451367 , +919983451367</p>
                 <p className="text-xs flex gap-2 items-center "><MdEmail /> shricheitanyakotputli@gmail.com</p>

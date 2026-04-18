@@ -30,7 +30,7 @@ const TopNav = () => {
           >
             <Mail size={16} />
             <div className=" flex  flex-col lowercase">
-              <span>shricheitanyakotputli@gmail.com</span>
+              <span>Shrichaitanyakotputli@gmail.com</span>
               <span>Kotputlibranchhead@srichaitanyacollege.net</span>
             </div>
           </a>
