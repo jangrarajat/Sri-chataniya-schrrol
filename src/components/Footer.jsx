@@ -85,12 +85,12 @@ const Footer = () => {
             <div className="space-y-4 text-gray-300">
               <div className="flex gap-2 items-start">
                 {/* <Mail size={18} /> */}
-                <span>For College Grievances</span>
+               
               </div>
               <div className="flex gap-2 items-start">
                 {/* <Phone size={18} /> */}
                 <div>
-                  <p>040-66 06 06 06</p>
+                  
                   <p className="text-xs">Timing: 9:30 AM to 6:30 PM (Mon–Sat)</p>
                 </div>
               </div>

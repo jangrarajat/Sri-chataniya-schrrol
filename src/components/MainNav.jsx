@@ -9,7 +9,7 @@ const MainNav = () => {
 
   const coursesDropdown = [
     { label: "School", href: "/courses#school" },
-    { label: "College", href: "/courses#college" },
+    // { label: "College", href: "/courses#college" },
     { label: "Foundation", href: "/courses#foundation" },
     { label: "Results", href: "/results" },
     { label: "Fee Structure", href: "/courses#fees" },
