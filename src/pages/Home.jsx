@@ -184,9 +184,9 @@ const Home = () => {
 
       {/* TWO COLUMN CARDS - Responsive */}
       <section className="px-4 py-4 sm:py-6">
-        <div className="w-full flex flex-col md:flex-row gap-4 md:gap-5">
+        <div className="w-full flex flex-col md:flex-row ">
           <div
-            className="w-full md:w-1/2 h-48 sm:h-52 md:h-56 rounded-xl p-4 sm:p-5 flex flex-col gap-2 sm:gap-3 text-white items-start relative overflow-hidden"
+            className="w-full md:w-1/2 h-48 sm:h-52 md:h-56  p-4 sm:p-5 flex flex-col gap-2 sm:gap-3 text-white items-start relative overflow-hidden"
             style={{ backgroundImage: "url('https://res.cloudinary.com/dmpka6wxi/image/upload/v1776449957/we_y0ccu1.png')", backgroundSize: "cover", backgroundPosition: "center" }}
           >
             <div className="absolute inset-0 bg-red-900/75"></div>
@@ -200,7 +200,7 @@ const Home = () => {
           </div>
 
           <div
-            className="w-full md:w-1/2 h-48 sm:h-52 md:h-56 rounded-xl p-4 sm:p-5 flex flex-col gap-2 sm:gap-3 text-white items-start relative overflow-hidden"
+            className="w-full md:w-1/2 h-48 sm:h-52 md:h-56  p-4 sm:p-5 flex flex-col gap-2 sm:gap-3 text-white items-start relative overflow-hidden"
             style={{ backgroundImage: "url('https://res.cloudinary.com/dmpka6wxi/image/upload/v1776450127/er_tb15ue.png')", backgroundSize: "cover", backgroundPosition: "center" }}
           >
             <div className="absolute inset-0 bg-blue-600/80"></div>
