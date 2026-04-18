@@ -40,7 +40,7 @@ const TopNav = () => {
           <div className="  flex flex-row gap-5 items-center  w-full">
             <p className=" flex items-center  hover:underline text-xs text-nowrap  "><IndianRupee size={14} />Pay online</p>
             <p className=" flex items-center  gap-1 hover:underline text-xs"> <GraduationCap size={20} /> Alumni</p>
-            <input type="text" placeholder="Search" className=" rounded-lg  md:px-3 pl-1 focus:outline-red-300 text-gray-500" />
+            <input type="text" placeholder="Search" className=" rounded-lg  md:px-3 pl-2 w-32 focus:outline-red-300 text-gray-500" />
           </div>
         </div>
         {/* RIGHT SECTION - SOCIAL ICONS */}
