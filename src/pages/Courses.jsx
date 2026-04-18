@@ -65,8 +65,8 @@ const Courses = () => {
       </section>
 
       {/* COURSES */}
-      <section className="py-12 px-4 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-6">
+      <section className="py-12 px-4 max-w-6xl mx-auto  ">
+        <div className="grid md:grid-cols-2 gap-6  " >
           {courses.map((course) => (
             <div key={course.id} className="border p-6 rounded shadow">
               <div className="text-yellow-400 mb-3">{course.icon}</div>

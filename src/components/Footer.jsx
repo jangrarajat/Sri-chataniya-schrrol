@@ -25,7 +25,7 @@ const Footer = () => {
           </div>
 
           <div className="flex items-center gap-4">
-            <p className="text-sm">Connect With Us:</p>
+            {/* <p className="text-sm">Connect With Us:</p> */}
             {/* These now work because they are imported above */}
             {/* <Facebook size={20} className="cursor-pointer" />
             <Instagram size={20} className="cursor-pointer" />
@@ -34,37 +34,38 @@ const Footer = () => {
         </div>
 
         {/* ... rest of your grid code ... */}
-        <div className="grid md:grid-cols-4 gap-10 text-sm">
+        <div className="grid md:grid-cols-4 gap-10 text-sm ">
           {/* ... Quick Links, Courses, Institutes ... */}
           <div>
             <h3 className="font-bold mb-4 text-lg">Quick Links</h3>
             <ul className="space-y-2 text-gray-300">
-              <li>Sri Chaitanya Alumni</li>
-
-              <li>Branch Locator</li>
-              <li>Our Blog</li>
-              <li>Contact Us</li>
+              <li className=" cursor-pointer  hover:underline">Home</li>
+              <li className=" cursor-pointer  hover:underline">About Us</li>
+              <li className=" cursor-pointer  hover:underline">Courses</li>
+              <li className=" cursor-pointer  hover:underline">Admission</li>
+              <li className=" cursor-pointer  hover:underline">Contact</li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-bold mb-4 text-lg">Courses</h3>
+            <h3 className="font-bold mb-4 text-lg">Academics</h3>
             <ul className="space-y-2 text-gray-300">
-              <li>NEET UG</li>
-              <li>IIT (Main & Advanced)</li>
-
+              <li  className=" cursor-pointer hover:underline">School</li>
+              <li  className=" cursor-pointer hover:underline">Foundation</li>
+              <li  className=" cursor-pointer hover:underline">Results</li>
+              <li  className=" cursor-pointer hover:underline">Careers</li>
             </ul>
           </div>
 
           <div>
             <h3 className="font-bold mb-4 text-lg">Institutes</h3>
             <ul className="space-y-2 text-gray-300">
-              <li>Sri Chaitanya Colleges</li>
-              <li>Sri Chaitanya Schools</li>
-              <li>Future Pathways</li>
-              <li>Sri Chaitanya IAS Academy</li>
-              <li>Sri Chaitanya Academy</li>
-              <li>Infinity Learn</li>
+              <li className=" cursor-pointer hover:underline">Sri Chaitanya Colleges</li>
+              <li className=" cursor-pointer hover:underline">Sri Chaitanya Schools</li>
+              <li className=" cursor-pointer hover:underline">Future Pathways</li>
+              <li className=" cursor-pointer hover:underline">Sri Chaitanya IAS Academy</li>
+              <li className=" cursor-pointer hover:underline">Sri Chaitanya Academy</li>
+              <li className=" cursor-pointer hover:underline">Infinity Learn</li>
             </ul>
           </div>
 

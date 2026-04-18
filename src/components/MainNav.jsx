@@ -46,7 +46,7 @@ const MainNav = () => {
             <h1 className="text-red-600 font-bold text-3xl">
               SRI CHAITANYA 
             </h1>
-            <p className="text-gray-500 text-sm">
+            <p className="text-gray-500 text-sm ">
              ACADEMY KOTPUTLI
             </p>
           </div>
