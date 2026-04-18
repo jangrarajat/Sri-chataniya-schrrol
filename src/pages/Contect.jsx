@@ -118,7 +118,7 @@ const Contact = () => {
                   {info.title}
                 </h3>
                 {info.details.map((detail, i) => (
-                  <p key={i} className="text-gray-600 text-sm md:text-base">
+                  <p key={i} className="text-gray-600 text-sm md:text-xs">
                     {detail}
                   </p>
                 ))}

@@ -1,15 +1,15 @@
 // Admission.jsx - Fully Responsive & Professional UI
 import React, { useState } from "react";
 import Layout from "../components/Layout";
-import { 
-  User, 
-  Calendar, 
-  Mail, 
-  Phone, 
-  MapPin, 
-  BookOpen, 
-  GraduationCap, 
-  Users, 
+import {
+  User,
+  Calendar,
+  Mail,
+  Phone,
+  MapPin,
+  BookOpen,
+  GraduationCap,
+  Users,
   Home,
   CheckCircle,
   AlertCircle,
@@ -55,7 +55,7 @@ const Admission = () => {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.studentName.trim()) newErrors.studentName = "Student name is required";
     if (!formData.fatherName.trim()) newErrors.fatherName = "Father's name is required";
     if (!formData.dob) newErrors.dob = "Date of birth is required";
@@ -71,14 +71,14 @@ const Admission = () => {
     if (!formData.state.trim()) newErrors.state = "State is required";
     if (!formData.pincode.trim()) newErrors.pincode = "Pincode is required";
     else if (!/^\d{6}$/.test(formData.pincode)) newErrors.pincode = "Pincode must be 6 digits";
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       setSubmitStatus('error');
       setTimeout(() => setSubmitStatus(null), 3000);
@@ -86,13 +86,13 @@ const Admission = () => {
     }
 
     setIsSubmitting(true);
-    
+
     // Simulate API call
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
       console.log("Form Data:", formData);
       setSubmitStatus('success');
-      
+
       // Reset form
       setFormData({
         studentName: "",
@@ -112,7 +112,7 @@ const Admission = () => {
         schoolName: "",
         percentage: "",
       });
-      
+
       setTimeout(() => setSubmitStatus(null), 3000);
     } catch (error) {
       setSubmitStatus('error');
@@ -159,7 +159,7 @@ const Admission = () => {
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2"></div>
           <div className="absolute top-1/2 left-1/2 w-48 h-48 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
         </div>
-        
+
         <div className="relative z-10 text-center px-4">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
             Admission Open 2026-27
@@ -172,7 +172,7 @@ const Admission = () => {
 
       {/* FORM SECTION */}
       <section className="py-12 sm:py-16 md:py-20 px-4 max-w-5xl mx-auto">
-        
+
         {/* Success/Error Messages */}
         {submitStatus === 'success' && (
           <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3">
@@ -180,7 +180,7 @@ const Admission = () => {
             <p className="text-green-700 text-sm sm:text-base">Application submitted successfully! Our admission counselor will contact you soon.</p>
           </div>
         )}
-        
+
         {submitStatus === 'error' && (
           <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3">
             <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
@@ -190,7 +190,7 @@ const Admission = () => {
 
         {/* Main Form */}
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
-          
+
           {/* Form Header */}
           <div className="bg-gradient-to-r from-red-600 to-red-700 px-6 sm:px-8 py-4 sm:py-5">
             <h2 className="text-xl sm:text-2xl font-bold text-white">Admission Application Form</h2>
@@ -198,7 +198,7 @@ const Admission = () => {
           </div>
 
           <div className="p-6 sm:p-8">
-            
+
             {/* Student Details Section */}
             <div className="mb-8">
               <div className="flex items-center gap-2 mb-5 pb-2 border-b-2 border-red-200">
@@ -470,9 +470,8 @@ const Admission = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-2 ${
-                  isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:from-red-700 hover:to-red-800 transform hover:-translate-y-0.5 hover:shadow-lg"
-                }`}
+                className={`flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-2 ${isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:from-red-700 hover:to-red-800 transform hover:-translate-y-0.5 hover:shadow-lg"
+                  }`}
               >
                 {isSubmitting ? (
                   <>
@@ -513,7 +512,8 @@ const Admission = () => {
               </div>
               <div>
                 <p className="text-gray-600 text-sm">Need help with admission?</p>
-                <p className="font-bold text-gray-800">Call us: +91 9982451367</p>
+                <p className="font-bold text-gray-800"> +91 9982451367, </p>
+                <p className="font-bold text-gray-800">+91 9983451367</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
@@ -522,7 +522,10 @@ const Admission = () => {
               </div>
               <div>
                 <p className="text-gray-600 text-sm">Email us for queries</p>
-                <p className="font-bold text-gray-800">admissions@srichaitanya.edu</p>
+                <div>
+                  <p className="font-bold text-gray-800">shrichaitanyakotputli@gmail.com</p>
+                  <p className="font-bold text-gray-800">Kotputlibranchhead@srichaitanyacollege.net</p>
+                </div>
               </div>
             </div>
           </div>
