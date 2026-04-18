@@ -1,89 +1,129 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300">
+    <footer className="bg-[#142850] text-white">
 
-      {/* MAIN */}
-      <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* TOP SECTION */}
+      <div className="max-w-7xl mx-auto px-6 py-12">
 
-        {/* ABOUT */}
-        <div>
-          <div className="flex items-center gap-2 mb-4">
+        {/* LOGO + SOCIAL */}
+        <div className="flex justify-between items-center border-b border-gray-500 pb-6 mb-10">
+
+          <div className="flex items-center gap-3">
             <img
               src="https://res.cloudinary.com/djtvxmttf/image/upload/v1776073440/Sri_Chaitanya_Logo_pjwpl3.png"
               className="w-16"
-              alt="Logo"
             />
-            <h3 className="text-white font-bold text-lg">
-              Sri Chetanaya
-            </h3>
+            <div>
+              <h2 className="text-2xl font-bold">
+                Sri Chaitanya
+              </h2>
+              <p className="text-sm text-gray-300">
+                Educational Institutions
+              </p>
+            </div>
           </div>
 
-          <p className="text-sm mb-4">
-            Excellence in education since 1995.
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-sm">Connect With Us:</p>
 
-          <div className="flex gap-3">
-            <a href="#" className="hover:text-yellow-400">
-              <Facebook size={18} />
-            </a>
-            <a href="#" className="hover:text-yellow-400">
-              <Youtube size={18} />
-            </a>
-            <a href="#" className="hover:text-yellow-400">
-              <Instagram size={18} />
-            </a>
+            <Facebook size={20} className="cursor-pointer" />
+            <Instagram size={20} className="cursor-pointer" />
+            <Youtube size={20} className="cursor-pointer" />
           </div>
         </div>
 
-        {/* LINKS */}
-        <div>
-          <h3 className="text-white font-bold mb-4">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/" className="hover:text-yellow-400">Home</Link></li>
-            <li><Link to="/about" className="hover:text-yellow-400">About</Link></li>
-            <li><Link to="/courses" className="hover:text-yellow-400">Courses</Link></li>
-            <li><Link to="/admission" className="hover:text-yellow-400">Admission</Link></li>
-          </ul>
-        </div>
+        {/* GRID */}
+        <div className="grid md:grid-cols-4 gap-10 text-sm">
 
-        {/* ACADEMICS */}
-        <div>
-          <h3 className="text-white font-bold mb-4">Academics</h3>
-          <ul className="space-y-2 text-sm">
-            <li><Link to="/courses" className="hover:text-yellow-400">School</Link></li>
-            <li><Link to="/courses" className="hover:text-yellow-400">Foundation</Link></li>
-            <li><Link to="/results" className="hover:text-yellow-400">Results</Link></li>
-          </ul>
-        </div>
-
-        {/* CONTACT */}
-        <div>
-          <h3 className="text-white font-bold mb-4">Contact</h3>
-
-          <div className="space-y-3 text-sm">
-            <p className="flex gap-2">
-              <MapPin size={16} /> Kotputli, Rajasthan
-            </p>
-
-            <a href="tel:+919982451367" className="flex gap-2 hover:text-yellow-400">
-              <Phone size={16} /> +91 9982451367
-            </a>
-
-            <a href="mailto:info@gmail.com" className="flex gap-2 hover:text-yellow-400">
-              <Mail size={16} /> info@gmail.com
-            </a>
+          {/* QUICK LINKS */}
+          <div>
+            <h3 className="font-bold mb-4 text-lg">Quick Links</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li>Sri Chaitanya Alumni</li>
+              <li>Student Login</li>
+              <li>Parent Login</li>
+              <li>Branch Locator</li>
+              <li>Our Blog</li>
+              <li>Contact Us</li>
+            </ul>
           </div>
-        </div>
 
+          {/* COURSES */}
+          <div>
+            <h3 className="font-bold mb-4 text-lg">Courses</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li>NEET UG</li>
+              <li>IIT (Main & Advanced)</li>
+              <li>National Engineering Intensive Course</li>
+              <li>Intermediate Public Exam</li>
+              <li>UPSC SERVICES</li>
+              <li>Sri Chaitanya Academy</li>
+            </ul>
+          </div>
+
+          {/* INSTITUTES */}
+          <div>
+            <h3 className="font-bold mb-4 text-lg">Institutes</h3>
+            <ul className="space-y-2 text-gray-300">
+              <li>Sri Chaitanya Colleges</li>
+              <li>Sri Chaitanya Schools</li>
+              <li>Future Pathways</li>
+              <li>Sri Chaitanya IAS Academy</li>
+              <li>Sri Chaitanya Academy</li>
+              <li>Infinity Learn</li>
+            </ul>
+          </div>
+
+          {/* CONTACT */}
+          <div>
+            <h3 className="font-bold mb-4 text-lg">Contact Details</h3>
+
+            <div className="space-y-4 text-gray-300">
+
+              <div className="flex gap-2 items-start">
+                <Mail size={18} />
+                <span>For College Grievances</span>
+              </div>
+
+              <div className="flex gap-2 items-start">
+                <Phone size={18} />
+                <div>
+                  <p>040-66 06 06 06</p>
+                  <p className="text-xs">
+                    Timing: 9:30 AM to 6:30 PM (Mon–Sat)
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-2 items-start">
+                <MapPin size={18} />
+                <p className="text-xs">
+                  Plot # 304, Kasetty Heights,<br />
+                  Sri Ayyappa Society, Madhapur,<br />
+                  Hyderabad - 500081,<br />
+                  Telangana, INDIA.
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
       </div>
 
       {/* BOTTOM */}
-      <div className="border-t border-gray-700 py-6 text-center text-sm">
-        © 2026 Sri Chetanaya | All Rights Reserved
+      <div className="bg-[#0b1c3a] py-4 px-6 flex flex-col md:flex-row justify-between text-sm text-gray-300">
+
+        <p>© Copyright 2026. Sri Chaitanya Group. All Rights Reserved.</p>
+
+        <div className="flex gap-6">
+          <p className="cursor-pointer">Privacy Policy</p>
+          <p className="cursor-pointer">Terms & Conditions</p>
+        </div>
+
       </div>
 
     </footer>

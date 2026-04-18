@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, FacebookIcon, Instagram, InstagramIcon, MessageCircle, MessageCircleCodeIcon, Youtube, YoutubeIcon } from "lucide-react";
+import {   FacebookIcon,   InstagramIcon,  MessageCircleCodeIcon,   YoutubeIcon } from "lucide-react";
 
 const QuickContactSidebar = () => {
     return (
