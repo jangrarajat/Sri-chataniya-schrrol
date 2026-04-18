@@ -35,7 +35,7 @@ const QuickContactSidebar = () => {
                 {/* Facebook */}
                 <li className="relative w-[53px] m-0 p-0 cursor-pointer text-white block">
                     <a
-                        href="https://www.facebook.com/share/18fDsdQu5V/"
+                        href="https://www.facebook.com/share/1DMoEtE2Kj/?mibextid=wwXIfr"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-[#1877F2] hover:bg-[#0f62e0] w-[53px] h-[53px] flex items-center justify-center text-white transition"
@@ -49,7 +49,7 @@ const QuickContactSidebar = () => {
                 {/* Instagram */}
                 <li className="relative w-[53px] m-0 p-0 cursor-pointer text-white block">
                     <a
-                        href="https://www.instagram.com/srichaitanyakotputli/"
+                        href="https://www.instagram.com/srichaitanyakotputli?igsh=MW1lbmlzYmN4eDNxcA=="
                         target="_blank"
                         rel="noopener noreferrer"
                         className="bg-gradient-to-br from-[#FCAF45] via-[#F56040] to-[#C13584] w-[53px] h-[53px] flex items-center justify-center text-white hover:opacity-80 transition"
