@@ -1,6 +1,9 @@
 import React from "react";
 // Added missing icons to the import list below
 // import { Mail, Phone, MapPin, Facebook, Instagram, Youtube, IndianRupee, GraduationCap, MessageCircle } from "lucide-react";
+import { CiLocationOn } from "react-icons/ci";
+import { MdAddIcCall } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
   return (
@@ -37,8 +40,7 @@ const Footer = () => {
             <h3 className="font-bold mb-4 text-lg">Quick Links</h3>
             <ul className="space-y-2 text-gray-300">
               <li>Sri Chaitanya Alumni</li>
-              <li>Student Login</li>
-              <li>Parent Login</li>
+
               <li>Branch Locator</li>
               <li>Our Blog</li>
               <li>Contact Us</li>
@@ -50,10 +52,7 @@ const Footer = () => {
             <ul className="space-y-2 text-gray-300">
               <li>NEET UG</li>
               <li>IIT (Main & Advanced)</li>
-              <li>National Engineering Intensive Course</li>
-              <li>Intermediate Public Exam</li>
-              <li>UPSC SERVICES</li>
-              <li>Sri Chaitanya Academy</li>
+
             </ul>
           </div>
 
@@ -83,14 +82,13 @@ const Footer = () => {
                   <p className="text-xs">Timing: 9:30 AM to 6:30 PM (Mon–Sat)</p>
                 </div>
               </div>
-              <div className="flex gap-2 items-start">
+              <div className="flex flex-col gap-2 items-start">
                 {/* <MapPin size={18} /> */}
-                <p className="text-xs">
-                  Plot # 304, Kasetty Heights,<br />
-                  Sri Ayyappa Society, Madhapur,<br />
-                  Hyderabad - 500081,<br />
-                  Telangana, INDIA.
+                <p className="text-xs flex gap-2 ">
+                <CiLocationOn />  Near Krishna Talkies, Old Vinayak Hospital Building,Kotputli - 303108<br />
                 </p>
+                <p className="text-xs flex gap-2 items-center "><MdAddIcCall /> +91 +919982451367 , +919983451367</p>
+                <p className="text-xs flex gap-2 items-center "><MdEmail /> shricheitanyakotputli@gmail.com</p>
               </div>
             </div>
           </div>

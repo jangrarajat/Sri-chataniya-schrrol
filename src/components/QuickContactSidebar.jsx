@@ -1,6 +1,11 @@
 import React from "react";
 // Removed 'Icon' from the names and fixed the import list
 // import { MessageCircle, MessageSquareCode, Facebook, Instagram, Youtube } from "lucide-react";
+import { CiYoutube } from "react-icons/ci";
+import { FaInstagram } from "react-icons/fa";
+import { CiFacebook } from "react-icons/ci";
+import { FaMessage } from "react-icons/fa6";
+
 
 const QuickContactSidebar = () => {
     return (
@@ -19,6 +24,8 @@ const QuickContactSidebar = () => {
                         >
                             {/* Changed to MessageCircle or MessageSquareCode */}
                             {/* <MessageSquareCode size={24}/> */}
+                            <FaMessage />
+
                             <span className="text-[8px] font-medium tracking-wide mt-0.5">Quick</span>
                             <span className="text-[8px] font-medium tracking-wide -mt-0.5">Contact</span>
                         </a>
@@ -34,6 +41,8 @@ const QuickContactSidebar = () => {
                         className="bg-[#1877F2] hover:bg-[#0f62e0] w-[53px] h-[53px] flex items-center justify-center text-white transition"
                     >
                         {/* <Facebook size={24}/> */}
+                        <CiFacebook />
+
                     </a>
                 </li>
 
@@ -46,6 +55,8 @@ const QuickContactSidebar = () => {
                         className="bg-gradient-to-br from-[#FCAF45] via-[#F56040] to-[#C13584] w-[53px] h-[53px] flex items-center justify-center text-white hover:opacity-80 transition"
                     >
                         {/* <Instagram size={24}/> */}
+                        <FaInstagram />
+
                     </a>
                 </li>
 
@@ -58,6 +69,7 @@ const QuickContactSidebar = () => {
                         className="bg-[#FF0000] hover:bg-[#cc0000] w-[53px] h-[53px] flex items-center justify-center text-white transition rounded-bl-2xl"
                     >
                         {/* <Youtube size={24}/> */}
+                       <CiYoutube/>
                     </a>
                 </li>
 
