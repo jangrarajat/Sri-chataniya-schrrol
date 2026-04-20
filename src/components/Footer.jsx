@@ -109,7 +109,7 @@ const Footer = () => {
 
       {/* BOTTOM */}
       <div className="bg-[#0b1c3a] py-4 px-6 flex flex-col md:flex-row justify-between text-sm text-gray-300">
-        <p>© Copyright 2026. Sri Chaitanya Group. All Rights Reserved.</p>
+        <p>© Copyright 2026. Sri Chaitanya Group run by VINAYAK EDUCARE. All Rights Reserved</p>
         <div className="flex gap-6">
           <p className="cursor-pointer">Privacy Policy</p>
           <p className="cursor-pointer">Terms & Conditions</p>
