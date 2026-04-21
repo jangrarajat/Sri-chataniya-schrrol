@@ -4,6 +4,7 @@ import React from "react";
 import { CiLocationOn } from "react-icons/ci";
 import { MdAddIcCall } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -12,18 +13,22 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 py-12">
         {/* LOGO + SOCIAL */}
         <div className="flex justify-between items-center border-b border-gray-500 pb-6 mb-10">
-          <div className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <img
               src="https://res.cloudinary.com/djtvxmttf/image/upload/v1776073440/Sri_Chaitanya_Logo_pjwpl3.png"
-              className="w-16"
               alt="Logo"
+              className="h-16"
             />
             <div>
-              <h2 className="text-2xl font-bold">Sri Chaitanya</h2>
-              <p className="text-sm text-gray-300">Educational Institutions</p>
+              <h1 className="text-red-600 font-bold text-3xl">
+                SRI CHAITANYA
+              </h1>
+              <p className="text-gray-500 text-sm ">
+                ACADEMY KOTPUTLI
+              </p>
             </div>
-          </div>
-
+          </Link>
+  
           <div className="flex items-center gap-4">
             {/* <p className="text-sm">Connect With Us:</p> */}
             {/* These now work because they are imported above */}
@@ -85,12 +90,12 @@ const Footer = () => {
             <div className="space-y-4 text-gray-300">
               <div className="flex gap-2 items-start">
                 {/* <Mail size={18} /> */}
-               
+
               </div>
               <div className="flex gap-2 items-start">
                 {/* <Phone size={18} /> */}
                 <div>
-                  
+
                   <p className="text-xs">Timing: 9:30 AM to 6:30 PM (Mon–Sat)</p>
                 </div>
               </div>
@@ -108,8 +113,8 @@ const Footer = () => {
       </div>
 
       {/* BOTTOM */}
-      <div className="bg-[#0b1c3a] py-4 px-6 flex flex-col md:flex-row justify-between text-sm text-gray-300">
-        <p>© Copyright 2026. Sri Chaitanya Group run by VINAYAK EDUCARE. All Rights Reserved</p>
+      <div className="bg-[#0b1c3a] py-4 px-6 flex flex-col  uppercase md:flex-row justify-between text-sm text-gray-300">
+        <p>© Copyright 2026. Sri Chaitanya Academy Kotputli run by VINAYAK EDUCARE. All Rights Reserved</p>
         <div className="flex gap-6">
           <p className="cursor-pointer">Privacy Policy</p>
           <p className="cursor-pointer">Terms & Conditions</p>
