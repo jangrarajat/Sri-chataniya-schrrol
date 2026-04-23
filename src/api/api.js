@@ -1,7 +1,7 @@
 // src/api/api.js
 import axios from 'axios';
 
-const API_URL =  'http://localhost:5000/api';
+const API_URL =  'https://sri-chataniya-schrrol-server.onrender.com/api';
 
 // Create axios instance
 const api = axios.create({
