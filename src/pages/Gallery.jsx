@@ -1,99 +1,165 @@
-import React, { useState } from "react";
+// src/pages/Gallery.jsx
+import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import { X } from "lucide-react";
+import { getAllImages } from "../api/api";
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
+  const [images, setImages] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [categories, setCategories] = useState(["All"]);
 
-  const galleryImages = [
-    {
-      category: "Academics",
-      images: [
-        { url: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f", title: "Science Lab" },
-        { url: "https://images.unsplash.com/photo-1509042239860-f550ce710b93", title: "Computer Lab" },
-        { url: "https://images.unsplash.com/photo-1497633762026-7f06120e7fd8", title: "Classroom" },
-        { url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d", title: "Study" },
-      ],
-    },
-    {
-      category: "Sports",
-      images: [
-        { url: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211", title: "Ground" },
-        { url: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48", title: "Basketball" },
-        { url: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30", title: "Sports Day" },
-        { url: "https://images.unsplash.com/photo-1479885585556-5a9e8e6f9b5f", title: "Athletics" },
-      ],
-    },
-  ];
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+  const fetchImages = async () => {
+    setLoading(true);
+    try {
+      const response = await getAllImages();
+      if (response.success) {
+        setImages(response.data);
+        // Extract unique categories
+        const uniqueCategories = ["All", ...new Set(response.data.map(img => img.category))];
+        setCategories(uniqueCategories);
+      }
+    } catch (error) {
+      console.error("Error fetching images:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const filterImagesByCategory = () => {
+    if (selectedCategory === "All") {
+      return images;
+    }
+    return images.filter(img => img.category === selectedCategory);
+  };
+
+  const filteredImages = filterImagesByCategory();
 
   return (
     <Layout>
-
       {/* HERO */}
-      <section className="py-16 bg-gradient-to-r from-red-600 to-red-700 text-white text-center">
-        <h1 className="text-5xl font-bold">Gallery</h1>
-        <p className="mt-2">Explore campus moments 📸</p>
+      <section className="relative py-20 sm:py-24 md:py-28 lg:py-32 bg-gradient-to-r from-red-700 via-red-600 to-orange-600 text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-0 w-72 h-72 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2"></div>
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        </div>
+        
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-4">
+            Our Gallery
+          </h1>
+          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto opacity-90">
+            Explore campus moments, events, and success stories 📸
+          </p>
+        </div>
       </section>
 
-      {/* GALLERY */}
-      <section className="py-16 px-4 max-w-7xl mx-auto">
+      {/* Category Filter */}
+      <section className="py-8 px-4 max-w-7xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setSelectedCategory(category)}
+              className={`px-5 py-2 rounded-full font-medium transition-all duration-300 ${
+                selectedCategory === category
+                  ? "bg-red-600 text-white shadow-lg"
+                  : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+              }`}
+            >
+              {category}
+            </button>
+          ))}
+        </div>
 
-        {galleryImages.map((section, i) => (
-          <div key={i} className="mb-12">
-
-            <h2 className="text-2xl font-bold text-red-600 mb-6">
-              {section.category}
-            </h2>
-
-            <div className="grid md:grid-cols-4 gap-6">
-              {section.images.map((img, j) => (
-                <div
-                  key={j}
-                  onClick={() => setSelectedImage(img.url)}
-                  className="cursor-pointer overflow-hidden rounded-lg shadow hover:shadow-xl"
-                >
-                  <img
-                    src={img.url}
-                    className="w-full h-60 object-cover hover:scale-110 transition"
-                  />
-                </div>
-              ))}
-            </div>
-
+        {/* Gallery Grid */}
+        {loading ? (
+          <div className="flex justify-center items-center h-64">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
           </div>
-        ))}
-
+        ) : filteredImages.length === 0 ? (
+          <div className="text-center py-16">
+            <p className="text-gray-500 text-lg">No images found in this category.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {filteredImages.map((img, index) => (
+              <div
+                key={img._id || index}
+                onClick={() => setSelectedImage(img.imageUrl)}
+                className="group cursor-pointer overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
+              >
+                <div className="relative overflow-hidden h-64">
+                  <img
+                    src={img.imageUrl}
+                    alt={img.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                <div className="p-4 bg-white">
+                  <h3 className="font-bold text-gray-800 text-lg mb-1">{img.title}</h3>
+                  <p className="text-gray-500 text-sm line-clamp-2">{img.description}</p>
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {img.tags && img.tags.slice(0, 3).map((tag, tagIdx) => (
+                      <span key={tagIdx} className="text-xs text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* MODAL */}
       {selectedImage && (
         <div
-          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedImage(null)}
         >
-          <div className="relative max-w-4xl w-full">
+          <div className="relative max-w-5xl w-full">
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-3 right-3 bg-white p-2 rounded-full"
+              className="absolute -top-12 right-0 bg-white/20 hover:bg-white/30 p-2 rounded-full transition"
             >
-              <X />
+              <X className="w-6 h-6 text-white" />
             </button>
-
-            <img src={selectedImage} className="w-full rounded-lg" />
+            <img 
+              src={selectedImage} 
+              alt="Gallery" 
+              className="w-full rounded-lg max-h-[85vh] object-contain"
+            />
           </div>
         </div>
       )}
 
       {/* CTA */}
-      <section className="py-12 bg-yellow-300 text-center">
-        <h2 className="text-3xl font-bold text-red-600 mb-4">
-          Visit Our Campus 🚀
-        </h2>
-        <a href="/contact" className="bg-red-600 text-white px-6 py-3 rounded">
-          Contact Us
-        </a>
+      <section className="py-16 sm:py-20 bg-gradient-to-r from-yellow-400 via-yellow-500 to-orange-500 text-center">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Visit Our Campus 🚀
+          </h2>
+          <p className="text-lg sm:text-xl text-gray-800 mb-8 max-w-2xl mx-auto">
+            Experience the excellence firsthand. Schedule a campus tour today!
+          </p>
+          <a
+            href="/admission"
+            className="inline-block bg-red-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-red-700 transition-all duration-300 transform hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            Apply Now
+          </a>
+        </div>
       </section>
-
     </Layout>
   );
 };

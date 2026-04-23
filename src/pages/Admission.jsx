@@ -1,4 +1,4 @@
-// Admission.jsx - Fully Responsive & Professional UI
+// src/pages/Admission.jsx
 import React, { useState } from "react";
 import Layout from "../components/Layout";
 import {
@@ -16,29 +16,29 @@ import {
   Send,
   RotateCcw
 } from "lucide-react";
+import { submitAdmissionForm } from "../api/api";
 
 const Admission = () => {
   const [formData, setFormData] = useState({
-    studentName: "",
+    fullName: "",
     fatherName: "",
     motherName: "",
-    dob: "",
+    dateOfBirth: "",
     gender: "",
     email: "",
-    phone: "",
+    phoneNumber: "",
     currentClass: "",
     desiredCourse: "",
-    section: "",
+    previousSchoolName: "",
+    lastExamPercentage: "",
     address: "",
     city: "",
     state: "",
     pincode: "",
-    schoolName: "",
-    percentage: "",
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
+  const [submitStatus, setSubmitStatus] = useState(null);
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -46,7 +46,6 @@ const Admission = () => {
       ...formData,
       [e.target.name]: e.target.value,
     });
-    // Clear error for this field
     if (errors[e.target.name]) {
       setErrors({ ...errors, [e.target.name]: "" });
     }
@@ -56,14 +55,14 @@ const Admission = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.studentName.trim()) newErrors.studentName = "Student name is required";
+    if (!formData.fullName.trim()) newErrors.fullName = "Student name is required";
     if (!formData.fatherName.trim()) newErrors.fatherName = "Father's name is required";
-    if (!formData.dob) newErrors.dob = "Date of birth is required";
+    if (!formData.dateOfBirth) newErrors.dateOfBirth = "Date of birth is required";
     if (!formData.gender) newErrors.gender = "Please select gender";
     if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = "Email is invalid";
-    if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
-    else if (!/^\d{10}$/.test(formData.phone)) newErrors.phone = "Phone number must be 10 digits";
+    if (!formData.phoneNumber.trim()) newErrors.phoneNumber = "Phone number is required";
+    else if (!/^\d{10}$/.test(formData.phoneNumber)) newErrors.phoneNumber = "Phone number must be 10 digits";
     if (!formData.currentClass) newErrors.currentClass = "Please select current class";
     if (!formData.desiredCourse) newErrors.desiredCourse = "Please select desired course";
     if (!formData.address.trim()) newErrors.address = "Address is required";
@@ -87,34 +86,52 @@ const Admission = () => {
 
     setIsSubmitting(true);
 
-    // Simulate API call
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log("Form Data:", formData);
+      const submitData = {
+        fullName: formData.fullName,
+        fatherName: formData.fatherName,
+        motherName: formData.motherName,
+        dateOfBirth: formData.dateOfBirth,
+        gender: formData.gender,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        currentClass: formData.currentClass,
+        desiredCourse: formData.desiredCourse,
+        previousSchoolName: formData.previousSchoolName || "",
+        lastExamPercentage: formData.lastExamPercentage ? parseFloat(formData.lastExamPercentage) : 0,
+        address: formData.address,
+        city: formData.city,
+        state: formData.state,
+        pincode: formData.pincode,
+      };
+      
+      const response = await submitAdmissionForm(submitData);
+      console.log("Submission response:", response);
+      
       setSubmitStatus('success');
 
-      // Reset form
+      // Reset form on success
       setFormData({
-        studentName: "",
+        fullName: "",
         fatherName: "",
         motherName: "",
-        dob: "",
+        dateOfBirth: "",
         gender: "",
         email: "",
-        phone: "",
+        phoneNumber: "",
         currentClass: "",
         desiredCourse: "",
-        section: "",
+        previousSchoolName: "",
+        lastExamPercentage: "",
         address: "",
         city: "",
         state: "",
         pincode: "",
-        schoolName: "",
-        percentage: "",
       });
 
       setTimeout(() => setSubmitStatus(null), 3000);
     } catch (error) {
+      console.error("Submission error:", error);
       setSubmitStatus('error');
       setTimeout(() => setSubmitStatus(null), 3000);
     } finally {
@@ -124,22 +141,21 @@ const Admission = () => {
 
   const handleReset = () => {
     setFormData({
-      studentName: "",
+      fullName: "",
       fatherName: "",
       motherName: "",
-      dob: "",
+      dateOfBirth: "",
       gender: "",
       email: "",
-      phone: "",
+      phoneNumber: "",
       currentClass: "",
       desiredCourse: "",
-      section: "",
+      previousSchoolName: "",
+      lastExamPercentage: "",
       address: "",
       city: "",
       state: "",
       pincode: "",
-      schoolName: "",
-      percentage: "",
     });
     setErrors({});
     setSubmitStatus(null);
@@ -151,9 +167,7 @@ const Admission = () => {
 
   return (
     <Layout>
-      {/* HERO SECTION */}
       <section className="relative py-16 sm:py-20 md:py-24 lg:py-28 bg-gradient-to-r from-red-700 via-red-600 to-orange-600 text-white overflow-hidden">
-        {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-72 h-72 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2"></div>
@@ -170,10 +184,8 @@ const Admission = () => {
         </div>
       </section>
 
-      {/* FORM SECTION */}
       <section className="py-12 sm:py-16 md:py-20 px-4 max-w-5xl mx-auto">
 
-        {/* Success/Error Messages */}
         {submitStatus === 'success' && (
           <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl flex items-center gap-3">
             <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0" />
@@ -188,10 +200,8 @@ const Admission = () => {
           </div>
         )}
 
-        {/* Main Form */}
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
 
-          {/* Form Header */}
           <div className="bg-gradient-to-r from-red-600 to-red-700 px-6 sm:px-8 py-4 sm:py-5">
             <h2 className="text-xl sm:text-2xl font-bold text-white">Admission Application Form</h2>
             <p className="text-red-100 text-sm sm:text-base mt-1">Please fill all the details carefully</p>
@@ -199,7 +209,7 @@ const Admission = () => {
 
           <div className="p-6 sm:p-8">
 
-            {/* Student Details Section */}
+            {/* Student Details */}
             <div className="mb-8">
               <div className="flex items-center gap-2 mb-5 pb-2 border-b-2 border-red-200">
                 <User className="w-5 h-5 text-red-600" />
@@ -208,44 +218,20 @@ const Admission = () => {
 
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
-                  <label className={labelClasses}>
-                    Student Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="studentName"
-                    value={formData.studentName}
-                    onChange={handleChange}
-                    placeholder="Enter full name"
-                    className={`${inputClasses} ${errors.studentName ? errorInputClasses : ""}`}
-                  />
-                  {errors.studentName && <p className="text-red-500 text-xs mt-1">{errors.studentName}</p>}
+                  <label className={labelClasses}>Student Name <span className="text-red-500">*</span></label>
+                  <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="Enter full name" className={`${inputClasses} ${errors.fullName ? errorInputClasses : ""}`} />
+                  {errors.fullName && <p className="text-red-500 text-xs mt-1">{errors.fullName}</p>}
                 </div>
 
                 <div>
-                  <label className={labelClasses}>
-                    Date of Birth <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="date"
-                    name="dob"
-                    value={formData.dob}
-                    onChange={handleChange}
-                    className={`${inputClasses} ${errors.dob ? errorInputClasses : ""}`}
-                  />
-                  {errors.dob && <p className="text-red-500 text-xs mt-1">{errors.dob}</p>}
+                  <label className={labelClasses}>Date of Birth <span className="text-red-500">*</span></label>
+                  <input type="date" name="dateOfBirth" value={formData.dateOfBirth} onChange={handleChange} className={`${inputClasses} ${errors.dateOfBirth ? errorInputClasses : ""}`} />
+                  {errors.dateOfBirth && <p className="text-red-500 text-xs mt-1">{errors.dateOfBirth}</p>}
                 </div>
 
                 <div>
-                  <label className={labelClasses}>
-                    Gender <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    name="gender"
-                    value={formData.gender}
-                    onChange={handleChange}
-                    className={`${inputClasses} ${errors.gender ? errorInputClasses : ""}`}
-                  >
+                  <label className={labelClasses}>Gender <span className="text-red-500">*</span></label>
+                  <select name="gender" value={formData.gender} onChange={handleChange} className={`${inputClasses} ${errors.gender ? errorInputClasses : ""}`}>
                     <option value="">Select Gender</option>
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -255,38 +241,20 @@ const Admission = () => {
                 </div>
 
                 <div>
-                  <label className={labelClasses}>
-                    Email Address <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="student@example.com"
-                    className={`${inputClasses} ${errors.email ? errorInputClasses : ""}`}
-                  />
+                  <label className={labelClasses}>Email Address <span className="text-red-500">*</span></label>
+                  <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="student@example.com" className={`${inputClasses} ${errors.email ? errorInputClasses : ""}`} />
                   {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                 </div>
 
                 <div>
-                  <label className={labelClasses}>
-                    Phone Number <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="9876543210"
-                    className={`${inputClasses} ${errors.phone ? errorInputClasses : ""}`}
-                  />
-                  {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
+                  <label className={labelClasses}>Phone Number <span className="text-red-500">*</span></label>
+                  <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} placeholder="9876543210" className={`${inputClasses} ${errors.phoneNumber ? errorInputClasses : ""}`} />
+                  {errors.phoneNumber && <p className="text-red-500 text-xs mt-1">{errors.phoneNumber}</p>}
                 </div>
               </div>
             </div>
 
-            {/* Parent Details Section */}
+            {/* Parent Details */}
             <div className="mb-8">
               <div className="flex items-center gap-2 mb-5 pb-2 border-b-2 border-red-200">
                 <Users className="w-5 h-5 text-red-600" />
@@ -295,35 +263,19 @@ const Admission = () => {
 
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
-                  <label className={labelClasses}>
-                    Father's Name <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="fatherName"
-                    value={formData.fatherName}
-                    onChange={handleChange}
-                    placeholder="Enter father's name"
-                    className={`${inputClasses} ${errors.fatherName ? errorInputClasses : ""}`}
-                  />
+                  <label className={labelClasses}>Father's Name <span className="text-red-500">*</span></label>
+                  <input type="text" name="fatherName" value={formData.fatherName} onChange={handleChange} placeholder="Enter father's name" className={`${inputClasses} ${errors.fatherName ? errorInputClasses : ""}`} />
                   {errors.fatherName && <p className="text-red-500 text-xs mt-1">{errors.fatherName}</p>}
                 </div>
 
                 <div>
                   <label className={labelClasses}>Mother's Name</label>
-                  <input
-                    type="text"
-                    name="motherName"
-                    value={formData.motherName}
-                    onChange={handleChange}
-                    placeholder="Enter mother's name"
-                    className={inputClasses}
-                  />
+                  <input type="text" name="motherName" value={formData.motherName} onChange={handleChange} placeholder="Enter mother's name" className={inputClasses} />
                 </div>
               </div>
             </div>
 
-            {/* Academic Details Section */}
+            {/* Academic Details */}
             <div className="mb-8">
               <div className="flex items-center gap-2 mb-5 pb-2 border-b-2 border-red-200">
                 <GraduationCap className="w-5 h-5 text-red-600" />
@@ -332,34 +284,20 @@ const Admission = () => {
 
               <div className="grid md:grid-cols-2 gap-5">
                 <div>
-                  <label className={labelClasses}>
-                    Current Class <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    name="currentClass"
-                    value={formData.currentClass}
-                    onChange={handleChange}
-                    className={`${inputClasses} ${errors.currentClass ? errorInputClasses : ""}`}
-                  >
+                  <label className={labelClasses}>Current Class <span className="text-red-500">*</span></label>
+                  <select name="currentClass" value={formData.currentClass} onChange={handleChange} className={`${inputClasses} ${errors.currentClass ? errorInputClasses : ""}`}>
                     <option value="">Select Current Class</option>
-                    <option value="9">9th Standard</option>
-                    <option value="10">10th Standard</option>
-                    <option value="11">11th Standard</option>
-                    <option value="12">12th Standard</option>
+                    <option value="9th">9th Standard</option>
+                    <option value="10th">10th Standard</option>
+                    <option value="11th">11th Standard</option>
+                    <option value="12th">12th Standard</option>
                   </select>
                   {errors.currentClass && <p className="text-red-500 text-xs mt-1">{errors.currentClass}</p>}
                 </div>
 
                 <div>
-                  <label className={labelClasses}>
-                    Desired Course <span className="text-red-500">*</span>
-                  </label>
-                  <select
-                    name="desiredCourse"
-                    value={formData.desiredCourse}
-                    onChange={handleChange}
-                    className={`${inputClasses} ${errors.desiredCourse ? errorInputClasses : ""}`}
-                  >
+                  <label className={labelClasses}>Desired Course <span className="text-red-500">*</span></label>
+                  <select name="desiredCourse" value={formData.desiredCourse} onChange={handleChange} className={`${inputClasses} ${errors.desiredCourse ? errorInputClasses : ""}`}>
                     <option value="">Select Desired Course</option>
                     <option value="JEE">JEE (IIT/JEE Main & Advanced)</option>
                     <option value="NEET">NEET (UG)</option>
@@ -370,31 +308,17 @@ const Admission = () => {
 
                 <div>
                   <label className={labelClasses}>Previous School Name</label>
-                  <input
-                    type="text"
-                    name="schoolName"
-                    value={formData.schoolName}
-                    onChange={handleChange}
-                    placeholder="Enter school name"
-                    className={inputClasses}
-                  />
+                  <input type="text" name="previousSchoolName" value={formData.previousSchoolName} onChange={handleChange} placeholder="Enter school name" className={inputClasses} />
                 </div>
 
                 <div>
                   <label className={labelClasses}>Last Exam Percentage</label>
-                  <input
-                    type="text"
-                    name="percentage"
-                    value={formData.percentage}
-                    onChange={handleChange}
-                    placeholder="e.g., 85.5%"
-                    className={inputClasses}
-                  />
+                  <input type="text" name="lastExamPercentage" value={formData.lastExamPercentage} onChange={handleChange} placeholder="e.g., 85.5" className={inputClasses} />
                 </div>
               </div>
             </div>
 
-            {/* Address Details Section */}
+            {/* Address Details */}
             <div className="mb-8">
               <div className="flex items-center gap-2 mb-5 pb-2 border-b-2 border-red-200">
                 <Home className="w-5 h-5 text-red-600" />
@@ -402,131 +326,59 @@ const Admission = () => {
               </div>
 
               <div>
-                <label className={labelClasses}>
-                  Address <span className="text-red-500">*</span>
-                </label>
-                <textarea
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  rows="3"
-                  placeholder="Enter complete address"
-                  className={`${inputClasses} resize-none ${errors.address ? errorInputClasses : ""}`}
-                ></textarea>
+                <label className={labelClasses}>Address <span className="text-red-500">*</span></label>
+                <textarea name="address" value={formData.address} onChange={handleChange} rows="3" placeholder="Enter complete address" className={`${inputClasses} resize-none ${errors.address ? errorInputClasses : ""}`}></textarea>
                 {errors.address && <p className="text-red-500 text-xs mt-1">{errors.address}</p>}
               </div>
 
               <div className="grid md:grid-cols-3 gap-5 mt-5">
                 <div>
-                  <label className={labelClasses}>
-                    City <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                    placeholder="Enter city"
-                    className={`${inputClasses} ${errors.city ? errorInputClasses : ""}`}
-                  />
+                  <label className={labelClasses}>City <span className="text-red-500">*</span></label>
+                  <input type="text" name="city" value={formData.city} onChange={handleChange} placeholder="Enter city" className={`${inputClasses} ${errors.city ? errorInputClasses : ""}`} />
                   {errors.city && <p className="text-red-500 text-xs mt-1">{errors.city}</p>}
                 </div>
 
                 <div>
-                  <label className={labelClasses}>
-                    State <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="state"
-                    value={formData.state}
-                    onChange={handleChange}
-                    placeholder="Enter state"
-                    className={`${inputClasses} ${errors.state ? errorInputClasses : ""}`}
-                  />
+                  <label className={labelClasses}>State <span className="text-red-500">*</span></label>
+                  <input type="text" name="state" value={formData.state} onChange={handleChange} placeholder="Enter state" className={`${inputClasses} ${errors.state ? errorInputClasses : ""}`} />
                   {errors.state && <p className="text-red-500 text-xs mt-1">{errors.state}</p>}
                 </div>
 
                 <div>
-                  <label className={labelClasses}>
-                    Pincode <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="pincode"
-                    value={formData.pincode}
-                    onChange={handleChange}
-                    placeholder="6-digit pincode"
-                    maxLength="6"
-                    className={`${inputClasses} ${errors.pincode ? errorInputClasses : ""}`}
-                  />
+                  <label className={labelClasses}>Pincode <span className="text-red-500">*</span></label>
+                  <input type="text" name="pincode" value={formData.pincode} onChange={handleChange} placeholder="6-digit pincode" maxLength="6" className={`${inputClasses} ${errors.pincode ? errorInputClasses : ""}`} />
                   {errors.pincode && <p className="text-red-500 text-xs mt-1">{errors.pincode}</p>}
                 </div>
               </div>
             </div>
 
-            {/* Form Actions */}
+            {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-gray-200">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-2 ${isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:from-red-700 hover:to-red-800 transform hover:-translate-y-0.5 hover:shadow-lg"
-                  }`}
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Submitting...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Submit Application
-                  </>
-                )}
+              <button type="submit" disabled={isSubmitting} className={`flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-2 ${isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:from-red-700 hover:to-red-800 transform hover:-translate-y-0.5 hover:shadow-lg"}`}>
+                {isSubmitting ? <><div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div> Submitting...</> : <><Send className="w-5 h-5" /> Submit Application</>}
               </button>
 
-              <button
-                type="button"
-                onClick={handleReset}
-                className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-2 hover:bg-gray-300"
-              >
-                <RotateCcw className="w-5 h-5" />
-                Reset Form
+              <button type="button" onClick={handleReset} className="flex-1 bg-gray-200 text-gray-700 py-3 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center gap-2 hover:bg-gray-300">
+                <RotateCcw className="w-5 h-5" /> Reset Form
               </button>
             </div>
 
-            {/* Note */}
             <p className="text-xs text-gray-500 mt-4 text-center">
               <span className="text-red-500">*</span> Required fields. We'll never share your information with third parties.
             </p>
           </div>
         </form>
 
-        {/* Additional Info Banner */}
+        {/* Info Banner */}
         <div className="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-100">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="bg-blue-100 p-2 rounded-full">
-                <Phone className="w-5 h-5 text-blue-600" />
-              </div>
-              <div>
-                <p className="text-gray-600 text-sm">Need help with admission?</p>
-                <p className="font-bold text-gray-800"> +91 9982451367, </p>
-                <p className="font-bold text-gray-800">+91 9983451367</p>
-              </div>
+              <div className="bg-blue-100 p-2 rounded-full"><Phone className="w-5 h-5 text-blue-600" /></div>
+              <div><p className="text-gray-600 text-sm">Need help with admission?</p><p className="font-bold text-gray-800">+91 9982451367, +91 9983451367</p></div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="bg-green-100 p-2 rounded-full">
-                <Mail className="w-5 h-5 text-green-600" />
-              </div>
-              <div>
-                <p className="text-gray-600 text-sm">Email us for queries</p>
-                <div>
-                  <p className="font-bold text-gray-800">shrichaitanyakotputli@gmail.com</p>
-                  <p className="font-bold text-gray-800">Kotputlibranchhead@srichaitanyacollege.net</p>
-                </div>
-              </div>
+              <div className="bg-green-100 p-2 rounded-full"><Mail className="w-5 h-5 text-green-600" /></div>
+              <div><p className="text-gray-600 text-sm">Email us for queries</p><p className="font-bold text-gray-800">shrichaitanyakotputli@gmail.com</p></div>
             </div>
           </div>
         </div>
